@@ -12,11 +12,9 @@ export default (routes) => {
       // hit up common first.
       Router.fire('common');
 
-      // do all the classes too.
-      document.body.className.split(/\s+/).forEach(function(classnm) {
-        Router.fire(classnm);
-        Router.fire(classnm, bodyId);
-      });
+      let route = document.body.getAttribute('data-route');
+      Router.fire(route);
+      Router.fire(route, bodyId);
 
       Router.fire('common', 'finalize');
     }
